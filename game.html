@@ -11,10 +11,10 @@
     </style>
     <body>
         <h1>One Lip Tulip Red Lip Blue Lip (Floating Tulip)</h1>
-        <p>*There are 6 flower stages, click as fast as you can to get to the Queenlip (time-limit:30 secs)*</p>
+        <p><strong>*There are 6 flower stages, click the tulip as fast as you can to get to the Queenlip (refresh page to start)*</strong></p>
         <p>Time: <span id="time">30<span></p>
+        <button onclick="buyWateringCan()">Powerup to make score increase faster [<span id="wateringcancost">Buy with 15 score points</span>] , <span id="watering_can">Times Used: 0</span></button>
         <p>Score: <span id="score">0</span></p>
-        <button onclick="buyWateringCan()">Press to pour the growth elixer [<span id="wateringcancost">$30</span>] , <span id="watering_can">Times Used: 0</span></button>
         <img src="https://github.com/Tanusakaray/Hackathon/blob/main/bluetulip.png?raw=true" height="400px", width="400px" onclick="addToScore(1)" id="bluetulip">
         <img src="https://github.com/Tanusakaray/Hackathon/blob/main/redtulip.png?raw=true" height="400px", width="400px" onclick="addToScore(2)", id="redtulip" style="display: none;">
         <img src="https://github.com/Tanusakaray/Hackathon/blob/main/yellowtulip.png?raw=true" height="400px", width="400px" onclick="addToScore(3)", id="yellowtulip" style="display: none;">
@@ -23,7 +23,7 @@
         <img src="https://github.com/Tanusakaray/Hackathon/blob/main/crazy.png?raw=true" height="400px", width="400px" onclick="addToScore(6)", id="crazy" style="display: none;">
         <script>
             var score = 0;
-            var wateringcancost = 30;
+            var wateringcancost = 15;
             var watering_can = 0;
             var time=30;
             var secs=0;
@@ -38,7 +38,6 @@
                 if (score >= wateringcancost) {
                     score = score - wateringcancost;
                     watering_can = watering_can + 1;
-                    wateringcancost = Math.round(wateringcancost * 1.15);
 
                     document.getElementById("score").innerHTML = score;
                     document.getElementById("wateringcancost").innerHTML = wateringcancost;
@@ -47,25 +46,25 @@
             }
                 
             function addToScore (amount) {
-                if (score >= 50 && document.getElementById("bluetulip").style.display !== "none") {
+                if (score >= 75 && document.getElementById("bluetulip").style.display !== "none") {
                     document.getElementById("bluetulip").style.display = "none";
                     document.getElementById("redtulip").style.display = "inline";
-                } else if (score >= 100 && document.getElementById("redtulip").style.display !== "none") {
+                } else if (score >= 150 && document.getElementById("redtulip").style.display !== "none") {
                     document.getElementById("bluetulip").style.display = "none";
                     document.getElementById("redtulip").style.display = "none";
                     document.getElementById("yellowtulip").style.display = "inline";
-                } else if (score >= 150 && document.getElementById("yellowtulip").style.display !== "none") {
+                } else if (score >= 225 && document.getElementById("yellowtulip").style.display !== "none") {
                     document.getElementById("bluetulip").style.display = "none";
                     document.getElementById("redtulip").style.display = "none";
                     document.getElementById("yellowtulip").style.display = "none";
                     document.getElementById("orgreentulip").style.display = "inline";
-                } else if (score >= 200 && document.getElementById("orgreentulip").style.display !== "none") {
+                } else if (score >= 300 && document.getElementById("orgreentulip").style.display !== "none") {
                     document.getElementById("bluetulip").style.display = "none";
                     document.getElementById("redtulip").style.display = "none";
                     document.getElementById("yellowtulip").style.display = "none";
                     document.getElementById("orgreentulip").style.display = "none";
                     document.getElementById("orpurptulip").style.display = "inline";
-                } else if (score >= 250 && document.getElementById("orpurptulip").style.display !== "none") {
+                } else if (score >= 450 && document.getElementById("orpurptulip").style.display !== "none") {
                     document.getElementById("bluetulip").style.display = "none";
                     document.getElementById("redtulip").style.display = "none";
                     document.getElementById("yellowtulip").style.display = "none";
@@ -81,7 +80,7 @@
             setInterval(function() {
                 score = score + watering_can;
                 document.getElementById("score").innerHTML = score;
-            }, 1000);
+            }, 350);
 
             timer = setInterval(function() {
                 time = time-secs;
